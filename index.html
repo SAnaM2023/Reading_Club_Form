@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscripción al Club de Lectura</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="card" id="card">
+    <form class="form">
+      <h1 class="form__title">Inscripción al Club de Lectura 📖</h1>
+
+      <div class="form__group">
+        <label class="form__label" for="nombre">Nombres de Lectores</label>
+        <input id="nombre" class="form__input" type="text" required />
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="email">Correo electrónico</label>
+        <input id="email" class="form__input" type="email" required />
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="lectura">Tipo de lectura preferida</label>
+        <select id="lectura" class="form__select">
+          <option value="terror">Terror</option>
+          <option value="romance">Romance</option>
+        </select>
+      </div>
+
+      <div class="form__group">
+        <p class="form__label">¿Tienes libros?</p>
+        <div class="form__option">
+          <input type="radio" name="libros" value="si" /> Sí
+        </div>
+        <div class="form__option"><input type="radio" name="libros" value="no" /> No
+        </div>
+
+        <label class="form__checkbox">
+          <input type="checkbox" name="rules" required />
+          Acepto las normas del club de lectura 🧾
+        </label>
+
+      <div class="form__group">
+        <label class="form__label" for="coments"><b>Comentarios adicionales:</b></label>
+        <textarea id="coments" class="form__textarea" name="coments" rows="4"></textarea>
+      </div>
+
+      <button class="form__button form__button--sparkle" onclick="shootGlitter(event)" type="submit">
+        ✨ Unirme al Club
+      </button>
+    </form>
+  </div>
+
+  <script>
+    function shootGlitter(event) {
+      event.preventDefault();
+      const button = event.target;
+      button.style.position = "relative";
+
+      const sparkle = document.createElement("div");
+      sparkle.textContent = "✨✨✨";
+      sparkle.style.position = "absolute";
+      sparkle.style.top = "-20px";
+      sparkle.style.left = "50%";
+      sparkle.style.transform = "translateX(-50%)";
+      sparkle.style.fontSize = "1.5rem";
+      sparkle.style.animation = "glitter 0.8s ease-out";
+
+      button.appendChild(sparkle);
+
+      setTimeout(() => sparkle.remove(), 800);
+    }
+
+    // Cambiar efecto glow y borde de la card según radio seleccionado
+    document.addEventListener("DOMContentLoaded", () => {
+      const card = document.getElementById("card");
+      const radios = document.querySelectorAll('input[name="libros"]');
+
+      radios.forEach(radio => {
+        radio.addEventListener("change", () => {
+          card.classList.remove("card--glow-black", "card--glow-red");
+          if (radio.value === "si") {
+            card.classList.add("card--glow-red");
+          } else if (radio.value === "no") {
+            card.classList.add("card--glow-black");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
