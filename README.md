@@ -1,5 +1,5 @@
 # Reading_Club_Form
-GROUP PROJECT **with some diffulties**
+GROUP PROJECT
 <br>
 BOOTCAMP SOMOS FACTORIA F5, SIFU. 
 <br>
